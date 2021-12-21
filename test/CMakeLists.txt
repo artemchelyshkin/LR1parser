@@ -1,0 +1,6 @@
+add_executable(TEST test.cpp)
+#target_link_libraries(TEST ${GTEST_LIBRARIES} ${GMOCK_BOTH_LIBRARIES} gcov Threads::Threads PARSER)
+target_link_libraries(TEST ${GTEST_LIBRARIES} gcov Threads::Threads)
+enable_testing()
+add_test(test ${PROJECT_SOURCE_DIR}/bin/TEST)
+setup_target_for_coverage(tests ${PROJECT_SOURCE_DIR}/bin/TEST coverage)
