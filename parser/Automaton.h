@@ -55,7 +55,7 @@ Vertex Automaton::Closure(Vertex vertex) {
                      NewVertex.Situations[i].CurrentPosition  + 1,
                      NewVertex.Situations[i].ThisRule.RightPart.end(), 
                      NewVertex.Situations[i].NEXT));
-          if (!NewVertex.Conatains(NewSituation)) {
+          if (!NewVertex.Contains(NewSituation)) {
             NewVertex.Situations.push_back(NewSituation);
             changed = true;
           }

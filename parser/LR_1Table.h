@@ -20,6 +20,8 @@ struct LR_1Table {
     Table = Builder->GetTable();
   }
 
+  LR_1Table() = default;
+
   bool Contains(string word);
 
   void MakeShift(char Elem, uint32_t NewPosition) {
@@ -58,6 +60,9 @@ struct LR_1Table {
 bool LR_1Table::Contains(string word) {
   while (!Stack.empty()) {
     Stack.pop();
+  }
+  if (word.size() == 0) {
+    return Grammar.ContainsEps;
   }
   Stack.push(0);
   word += "$";

@@ -13,7 +13,7 @@ struct Vertex {
   vector<Situation>            Situations;
   unordered_map<char, int32_t> GOTO;
 
-  bool Conatains(Situation situation) {
+  bool Contains(Situation situation) const {
     for (auto Elem : Situations) {
       if (Elem == situation) {
         return true;
@@ -23,3 +23,15 @@ struct Vertex {
   }
 
 };
+
+bool operator == (const Vertex& one, const Vertex& another) {
+  for (uint32_t i = 0; i < one.Situations.size(); ++i) {
+    bool found = false;
+    for (uint32_t j = 0; j < another.Situations.size(); ++j) {
+      if (!another.Contains(one.Situations[i])) {
+        return false;
+      }
+    }
+  }
+  return one.Situations.size() == another.Situations.size();
+}
