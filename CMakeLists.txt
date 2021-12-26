@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.8)
+project(formal_lang_project_parser)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" ${CMAKE_SOURCE_DIR}/cmake)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR}/bin)
+SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+
+include(CodeCoverage)
+
+
+find_package(GTest REQUIRED)
+#find_package(GMock REQUIRED)
+find_package(Threads REQUIRED)
+
+include_directories(${GTEST_INCLUDE_DIRS})
+#include_directories(${GMOCK_INCLUDE_DIRS})
+include_directories(${PROJECT_SOURCE_DIR}/parser)
+
+#add_subdirectory(${PROJECT_SOURCE_DIR}/parser)
+add_subdirectory(${PROJECT_SOURCE_DIR}/test)
